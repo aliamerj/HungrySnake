@@ -5,19 +5,17 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class SnakeShape extends JFrame implements ActionListener {
+public class SnakeShape extends JFrame implements ActionListener , Shape {
     private final int DOT_SNAKE_SIZE = 15;
-
     private int dots;
-
     private final int DELAY = 140;
 
     private Image snakeShapeBody;
-
     private Image snakeShapeHead;
 
     private Timer timer;
-    private void loadSnakeShape(){
+
+    public void loadSnakeShape(){
         ImageIcon imageSnakeBody = new ImageIcon("src/Model/Image/dot.png");
         snakeShapeBody = imageSnakeBody.getImage();
         ImageIcon imageSnakeHead = new ImageIcon("scr/Model/Image/head.png");
