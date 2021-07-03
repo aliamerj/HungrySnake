@@ -8,9 +8,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class SnakeShape extends Snake implements Shape {
-    public final int DOT_SNAKE_SIZE = 15;
+    public final int DOT_SNAKE_SIZE = 10;
     private int dots;
-
+    public final int ALL_DOTS = 900;
     public Image snakeShapeBody;
     public Image snakeShapeHead;
 

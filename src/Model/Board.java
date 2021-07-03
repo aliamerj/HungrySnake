@@ -6,8 +6,10 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Board extends JFrame  {
+
     private Shape shape ;
     private Snake snake;
+    private initSnakeGame initSnakeGame;
 
     protected final int boardWidth = 300;
     protected final int boardHeight = 300;
@@ -17,6 +19,6 @@ public class Board extends JFrame  {
         setFocusable(true);
         setPreferredSize(new Dimension(boardWidth, boardHeight));
         shape.loadSnakeShape();
-        snake.initScreen();
+        initSnakeGame.initScreen();
     }
 }

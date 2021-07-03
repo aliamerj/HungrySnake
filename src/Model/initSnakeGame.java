@@ -2,6 +2,7 @@ package Model;
 
 import Model.Food.Food;
 import Model.Food.ShapeFood;
+import Model.Snake.GameKeyAdapter;
 import Model.Snake.Snake;
 import Model.Snake.SnakeShape;
 
@@ -20,6 +21,7 @@ public class initSnakeGame extends JPanel implements ActionListener {
     private SnakeShape snakeShape;
     private Board board;
     private GameRule gameRule;
+    private Shape shape;
 
     private void initGame () {
         snake.snakeLocation();
@@ -29,6 +31,25 @@ public class initSnakeGame extends JPanel implements ActionListener {
         gameOver.gameOver(false);
 
 
+    }
+    public  initSnakeGame() {
+
+        initScreenPanel();
+    }
+
+    private void initScreenPanel() {
+
+        addKeyListener(new GameKeyAdapter());
+        setBackground(Color.black);
+        setFocusable(true);
+
+        setPreferredSize(new Dimension(board.boardWidth, board.boardHeight));
+        shape.loadSnakeShape();
+        initScreen();
+    }
+
+    public void initScreen() {
+        add(new SnakeShape());
     }
 
     public int getDELAY() {

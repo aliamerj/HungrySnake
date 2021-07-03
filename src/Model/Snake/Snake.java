@@ -6,7 +6,7 @@ import Model.GameOver;
 import javax.swing.*;
 import java.awt.*;
 
-public class Snake extends Board {
+public class Snake extends JFrame {
   private SnakeShape snakeShape ;
 
     protected boolean leftDirection = false;
@@ -15,28 +15,23 @@ public class Snake extends Board {
     protected boolean downDirection = false;
 
 
-    public int[] snakeX = new int[snakeShape.getDOT_SNAKE_SIZE()];
-    public int[] snakeY = new int[snakeShape.getDOT_SNAKE_SIZE()];
+    public int[] snakeX = new int[snakeShape.ALL_DOTS];
+    public int[] snakeY = new int[snakeShape.ALL_DOTS];
 
-    public Snake() throws HeadlessException {
-        initScreen();
-    }
-
-    public void initScreen() {
-        add(new SnakeShape());
-    }
-    public void snakeLocation(){
+    public void snakeLocation() {
         snakeShape.setDots(5);
         int dots = snakeShape.getDots();
-        for (int i=0 ; i < dots ; i++){
-            snakeX[i] = 50-i * 15;
+        for (int i = 0; i < dots; i++) {
+            snakeX[i] = 50 - i * 15;
             snakeY[i] = 50;
         }
-
-
     }
+
+
+
+
     //TODO :: MOVE method
-    public void move() {
+    public void move(){
 
         for (int z = snakeShape.getDots(); z > 0; z--) {
             snakeX[z] = snakeX[(z - 1)];
