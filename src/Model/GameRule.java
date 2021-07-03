@@ -1,16 +1,22 @@
 package Model;
 
 
-public class GameRule  {
+import Model.Snake.Snake;
+import Model.Snake.SnakeShape;
+
+public class GameRule {
     SnakeShape snakeShape;
     Snake snake;
+    Board board;
+    private GameOver gameOver ;
+    private initSnakeGame initSnakeGame;
 
 
     // game over if the snake has hit the itself
-    private void snakeHitItSelf(){
+    public void snakeHitItSelf(){
         for (int z = snakeShape.getDots(); z > 0; z--) {
             if ((z > 4) && hitItSelfX(snake.snakeX[z]) && hitItSelfY(snake.snakeY[z]))
-            gameOver();
+                gameOver.gameOver(true);
 
         }
 
@@ -26,26 +32,20 @@ public class GameRule  {
 
 
     // game over if the snake has hit the walls
-    private void snakeHitWalls(){
-//        if (y[0] >= B_HEIGHT) {
-//            inGame = false;
-//        }
-//
-//        if (y[0] < 0) {
-//            inGame = false;
-//        }
-//
-//        if (x[0] >= B_WIDTH) {
-//            inGame = false;
-//        }
-//
-//        if (x[0] < 0) {
-//            inGame = false;
-//        }
-        gameOver();
-    }
-    private void gameOver() {
-        var GameOver = new GameOver(true);
+    public void snakeHitWalls(){
+        if (snake.snakeY[0] >= board.boardHeight || snake.snakeY[0] < 0) {
+            initSnakeGame.inGame = false;
+        }
+
+        if (snake.snakeX[0] >= board.boardWidth || snake.snakeX[0] < 0) {
+            initSnakeGame.inGame = false;
+        }
+
+
+        if (initSnakeGame.inGame= false) {
+            gameOver.gameOver(true);
+
+        }
     }
 
 }

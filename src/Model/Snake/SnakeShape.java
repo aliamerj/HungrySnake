@@ -1,17 +1,18 @@
-package Model;
+package Model.Snake;
+
+import Model.Shape;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class SnakeShape extends JFrame implements ActionListener , Shape {
-    private final int DOT_SNAKE_SIZE = 15;
+public class SnakeShape extends Snake implements Shape {
+    public final int DOT_SNAKE_SIZE = 15;
     private int dots;
-    private final int DELAY = 140;
 
-    private Image snakeShapeBody;
-    private Image snakeShapeHead;
+    public Image snakeShapeBody;
+    public Image snakeShapeHead;
 
     private Timer timer;
 
@@ -32,14 +33,5 @@ public class SnakeShape extends JFrame implements ActionListener , Shape {
         return dots;
     }
 
-    public int getDELAY() {
-        return DELAY;
-    }
 
-
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
-    }
 }

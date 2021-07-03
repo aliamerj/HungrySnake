@@ -1,40 +1,42 @@
-package Model;
+package Model.Snake;
+
+import Model.Board;
+import Model.GameOver;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class Snake extends JFrame {
-  SnakeShape snakeShape;
+public class Snake extends Board {
+  private SnakeShape snakeShape ;
 
-    private boolean leftDirection = false;
-    private boolean rightDirection = true;
-    private boolean upDirection = false;
-    private boolean downDirection = false;
-    private boolean inGame = true;
+    protected boolean leftDirection = false;
+    protected boolean rightDirection = true;
+    protected boolean upDirection = false;
+    protected boolean downDirection = false;
 
 
-    protected int[] snakeX = new int[snakeShape.getDOT_SNAKE_SIZE()];
-    protected int[] snakeY = new int[snakeShape.getDOT_SNAKE_SIZE()];
+    public int[] snakeX = new int[snakeShape.getDOT_SNAKE_SIZE()];
+    public int[] snakeY = new int[snakeShape.getDOT_SNAKE_SIZE()];
 
     public Snake() throws HeadlessException {
         initScreen();
     }
 
-    private void initScreen() {
+    public void initScreen() {
         add(new SnakeShape());
     }
-    private void snakeLocation(){
+    public void snakeLocation(){
         snakeShape.setDots(5);
         int dots = snakeShape.getDots();
         for (int i=0 ; i < dots ; i++){
             snakeX[i] = 50-i * 15;
             snakeY[i] = 50;
         }
-        var game = new GameOver(false);
+
 
     }
     //TODO :: MOVE method
-    private void move() {
+    public void move() {
 
         for (int z = snakeShape.getDots(); z > 0; z--) {
             snakeX[z] = snakeX[(z - 1)];
