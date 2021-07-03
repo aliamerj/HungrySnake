@@ -1,5 +1,7 @@
 package Model;
 
+import java.awt.*;
+
 public interface Shape {
-    void loadSnakeShape();
+    void loadShape();
 }

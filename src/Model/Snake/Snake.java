@@ -7,18 +7,22 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Snake extends JFrame {
+
   private SnakeShape snakeShape ;
+
+    private final int ALL_DOTS = 900;
+
 
     protected boolean leftDirection = false;
     protected boolean rightDirection = true;
     protected boolean upDirection = false;
     protected boolean downDirection = false;
 
-
-    public int[] snakeX = new int[snakeShape.ALL_DOTS];
-    public int[] snakeY = new int[snakeShape.ALL_DOTS];
+    public int[] snakeX = new int[ALL_DOTS];
+    public int[] snakeY = new int[ALL_DOTS];
 
     public void snakeLocation() {
+        var snakeShape = new SnakeShape();
         snakeShape.setDots(5);
         int dots = snakeShape.getDots();
         for (int i = 0; i < dots; i++) {

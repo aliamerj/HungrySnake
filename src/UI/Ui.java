@@ -2,6 +2,7 @@ package UI;
 
 import Model.Board;
 import Model.Snake.Snake;
+import Model.initSnakeGame;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,7 +14,7 @@ public class Ui extends JFrame {
 
     private void initUI()  {
 
-        add(new Board());
+        add(new initSnakeGame());
 
         setResizable(false);
         pack();

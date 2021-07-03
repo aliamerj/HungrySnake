@@ -4,7 +4,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 public class GameKeyAdapter extends KeyAdapter {
-    Snake snake;
+    Snake snake = new Snake();
 
 
     @Override

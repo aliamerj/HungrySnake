@@ -11,6 +11,14 @@ public class Board extends JFrame  {
     private Snake snake;
     private initSnakeGame initSnakeGame;
 
+    public int getBoardWidth() {
+        return boardWidth;
+    }
+
+    public int getBoardHeight() {
+        return boardHeight;
+    }
+
     protected final int boardWidth = 300;
     protected final int boardHeight = 300;
 
@@ -18,7 +26,7 @@ public class Board extends JFrame  {
         setBackground(Color.black);
         setFocusable(true);
         setPreferredSize(new Dimension(boardWidth, boardHeight));
-        shape.loadSnakeShape();
+        shape.loadShape();
         initSnakeGame.initScreen();
     }
 }

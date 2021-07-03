@@ -1,6 +1,7 @@
 package Model;
 
 import Model.Food.Food;
+import Model.Food.GoodFood;
 import Model.Food.ShapeFood;
 import Model.Snake.GameKeyAdapter;
 import Model.Snake.Snake;
@@ -12,22 +13,22 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class initSnakeGame extends JPanel implements ActionListener {
-    private Snake snake;
-    private GameOver gameOver;
-    private Food food;
+    GameOver gameOver = new GameOver();
+    Snake snake = new Snake();
+    Food food = new GoodFood();
+    ShapeFood shapeFood = new ShapeFood();
+    SnakeShape snakeShape = new SnakeShape();
+
     public boolean inGame = true;
-    private final int DELAY = 140;
-    private ShapeFood shapeFood;
-    private SnakeShape snakeShape;
-    private Board board;
+
     private GameRule gameRule;
     private Shape shape;
+    private Board board;
+
 
     private void initGame () {
         snake.snakeLocation();
         food.locateFood();
-
-
         gameOver.gameOver(false);
 
 
@@ -35,26 +36,31 @@ public class initSnakeGame extends JPanel implements ActionListener {
     public  initSnakeGame() {
 
         initScreenPanel();
+
     }
 
     private void initScreenPanel() {
+        var bo = new Board();
+        Shape snakeShape = new SnakeShape();
+        Shape foodShape = new ShapeFood();
 
         addKeyListener(new GameKeyAdapter());
         setBackground(Color.black);
         setFocusable(true);
 
-        setPreferredSize(new Dimension(board.boardWidth, board.boardHeight));
-        shape.loadSnakeShape();
+        setPreferredSize(new Dimension(bo.getBoardWidth(), bo.getBoardHeight()));
+        snakeShape.loadShape();
+        foodShape.loadShape();
         initScreen();
     }
 
     public void initScreen() {
-        add(new SnakeShape());
+        snake.snakeLocation();
+        food.locateFood();
+        gameOver.gameOver(false);
+
     }
 
-    public int getDELAY() {
-        return DELAY;
-    }
 
     @Override
     public void paintComponent(Graphics g) {
@@ -64,15 +70,16 @@ public class initSnakeGame extends JPanel implements ActionListener {
     }
     private void doDrawing(Graphics g) {
 
+
         if (inGame) {
 
-            g.drawImage(shapeFood.apple, food.food_X, food.food_Y, this);
+            g.drawImage(shapeFood.getShape(), food.getFood_X(), food.getFood_Y(), this);
 
             for (int z = 0; z < snakeShape.getDots(); z++) {
                 if (z == 0) {
-                    g.drawImage(snakeShape.snakeShapeHead, snake.snakeX[z], snake.snakeY[z], this);
+                    g.drawImage(snakeShape.getSnakeShapeHead(), snake.snakeX[z], snake.snakeY[z], this);
                 } else {
-                    g.drawImage(snakeShape.snakeShapeBody, snake.snakeX[z], snake.snakeY[z], this);
+                    g.drawImage(snakeShape.getSnakeShapeBody(), snake.snakeX[z], snake.snakeY[z], this);
                 }
             }
             Toolkit.getDefaultToolkit().sync();
